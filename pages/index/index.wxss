@@ -1,0 +1,391 @@
+page {
+    background-color: #181717;
+    height: 100%;
+}
+
+.empty-view{
+    width: 100%;
+    height: 80%;
+    text-align: center;
+    color: #807074;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+}
+
+.container {
+    width: 710rpx;
+    margin: 20rpx 20rpx;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20rpx;
+    border-bottom: 2px solid #363636;
+}
+
+.add-code {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 240rpx;
+  background-color: rgb(41, 41, 41);
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
+  padding: 20rpx 60rpx;
+  text-align: center;
+  transform: translateY(100%); /* 初始状态：隐藏在底部 */
+  transition: transform 2s ease-in-out, opacity 0.6s ease-in-out;
+  color: #fff;
+  z-index: 4;     /* 确保悬浮在最上层 */
+}
+
+/* 当 showAddCode 为 true 时，滑出效果 */
+.show-add-code {
+  transform: translateY(0); /* 显示时：移动到视图中 */
+}
+
+.add-code .add-item {
+  display: flex;
+  align-items: center; /* 垂直居中对齐 */
+  font-size: 36rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  /* margin-bottom: 40rpx ; */
+}
+
+.add-code .icon {
+  width: 30px;          /* 设置图标的大小 */
+  height: 30px;
+  margin-right: 10px;    /* 图标与文字之间的间距 */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  z-index: 2; /* 确保在 add-code 下面 */
+}
+ /* 输入秘钥样式 */
+/* 弹框 */
+/* 遮罩层 */
+.input-box-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 弹框样式 */
+.input-popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 80%;
+  max-width: 600rpx;
+  background: #fff;
+  transform: translate(-50%, -50%) scale(0.8);
+  padding: 40rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+/* 显示状态 */
+.input-popup.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* 标题 */
+.popup-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333;
+  display: block;
+}
+
+/* 输入框容器 */
+.input-popup .input-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20rpx;
+  padding-left: 10rpx;
+  margin: 10rpx 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 左侧标签 */
+.input-popup .label {
+  font-size: 30rpx;
+  color: #333;
+  flex-shrink: 0;
+  width: 140rpx;  /* 保持标签统一宽度 */
+  text-align: left; /* 标签靠左 */
+}
+
+/* 必填 * 号 */
+.input-popup .required {
+  color: red;
+  margin-right: 5rpx;
+}
+
+/* 输入框 */
+.input-popup .input-field {
+  flex-grow: 1;
+  font-size: 28rpx;
+  padding: 10rpx;
+  border: 1px solid #ddd;
+  outline: none;
+  text-align: left;
+  border-radius: 8rpx;
+  color: #333;
+  background: #f9f9f9;
+}
+
+/* 输入框聚焦时 */
+.input-popup .input-field:focus {
+  border-color: #007AFF;  /* 聚焦时输入框变蓝 */
+  background: #fff;
+}
+
+/* 保存按钮 */
+.input-popup .save-btn {
+  width: 60%;
+  margin-top: 20rpx;
+  background: #f32703;
+  color: white;
+  padding: 18rpx;
+  font-size: 32rpx;
+  border-radius: 10rpx;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+/* 保存按钮悬浮效果 */
+.input-popup .save-btn:hover {
+  background: #0056b3;  /* 悬浮时变暗 */
+}
+
+/* 账户信息区域 */
+.account-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+}
+
+.header {
+    display: flex;
+    height: 72rpx;
+}
+
+.logo {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.logo image {
+    width: 100%;
+    height: 100%;
+}
+
+.issuer {
+    color: #fff;
+    font-size: 50rpx;
+    line-height: 50rpx;
+    margin-left: 20rpx;
+    width: 70%;
+    white-space: nowrap;        /* 不换行 */
+    overflow: hidden;           /* 超出部分隐藏 */
+    text-overflow: ellipsis;    /* 用省略号表示被隐藏的文本 */
+}
+
+.account {
+    color: #7a7a7a;
+    font-size: 30rpx;
+    white-space: nowrap;        /* 不换行 */
+    overflow: hidden;           /* 超出部分隐藏 */
+    text-overflow: ellipsis;    /* 用省略号表示被隐藏的文本 */
+}
+
+/* 验证码区域 */
+.code-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.code {
+    color: #fff;
+    font-size: 50rpx;
+    letter-spacing: 8rpx;
+    width: 100%;
+}
+
+.countdown {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.countdown .dot {
+    margin: 0 10rpx;
+    width: 15rpx;
+    height: 15rpx;
+    border-radius: 50%;
+    background-color: #121212;
+    display: inline-block;
+}
+
+.countdown .countdown_second{
+    margin: 0 10rpx;
+    display: inline-block;
+    color:#fff;
+    font-size: 20rpx;
+    width: 20rpx;
+    margin-left: 0rpx;
+}
+
+.dot-green {
+    background-color: #23d160 !important;
+}
+
+.dot-yellow {
+    background-color: #ffdd57 !important;
+}
+
+.dot-red {
+    background-color: #ff3860 !important;
+}
+
+/* 操作按钮区域 */
+.operation-container {
+    width: 710rpx;
+    height: 120rpx;
+    padding: 20rpx 20rpx 30rpx 30rpx;
+    position: fixed;  /* 关键定位属性 */
+    /* right: 0rpx;     距离右边距离 */
+    bottom: 160rpx;    /* 距离底部距离 */
+    z-index: 3;     /* 确保悬浮在最上层 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.operation-container .add {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #d60a0a;
+    margin-left: auto;  
+    margin-right: 20rpx; 
+}
+
+.add text {
+    color: #fff;
+    font-size: 60rpx;
+    line-height: 120rpx;
+}
+
+
+/* 底部固定导航栏 */
+.bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1f1e1e;
+  padding: 10rpx 0;
+  box-shadow: 0 -2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.bottom-nav .nav-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 33.33%;
+  height: 110rpx;
+  padding: 10rpx 0;
+}
+
+.bottom-nav .icon {
+  width: 66rpx;
+  height: 66rpx;
+  margin-bottom: 5rpx;
+}
+
+/* 二维码容器样式 */
+.qr-container {
+  display: flex;
+  flex-direction: column; /* 垂直排列 */
+  justify-content: center;
+  align-items: center; /* 中心对齐 */
+  margin-bottom: 30rpx;
+  width: 100%;
+  position: fixed; /* 使用固定定位确保二维码可以居中 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 居中 */
+}
+
+.qr-container-show{
+  z-index: 5; /* 确保二维码在最上层 */
+}
+
+/* 二维码样式 */
+.qr-canvas {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #d6d5d5; /* 添加边框 */
+  border-radius: 10rpx; /* 圆角边框 */
+  background-color: #fff; /* 画布背景色 */
+}
+
+/* 秘钥文本样式 */
+.qr-secret-text {
+  margin-top: 20rpx; /* 增加与二维码的间距 */
+  font-size: 28rpx;
+  color: rgb(253, 253, 253);
+  word-wrap: break-word; /* 保证秘钥不会超出容器 */
+  text-align: center;
+}
+
+/* 关闭按钮样式 */
+.close-btn {
+  margin-top: 18rpx; /* 间距 */
+  /* padding: 12rpx 24rpx; */
+  background-color: #FF4747; /* 红色背景 */
+  color: white;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  border-radius: 8rpx;
+  border: none;
+  cursor: pointer;
+  width: 200rpx !important;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #FF2E2E; /* 悬停时更深的红色 */
+}
+
+.close-btn:active {
+  background-color: #D43F3F; /* 按下时变色 */
+}

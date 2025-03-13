@@ -1,0 +1,23 @@
+<view class="notification">
+  <view class="notification-title">说明：</view>
+  <view class="notification-text">🔹 这是一个秘钥管理工具，支持数据备份和导出。</view>
+  <view class="notification-text">🔹 数据仅存储在本地，更换设备或切换微信账号将丢失，请定时备份数据。</view>
+  <view class="notification-text">🔹 无广告、无个人信息收集，安全可靠。</view>
+</view>
+
+<!-- 分享按钮 -->
+<button class="share-button" open-type="share">分享小程序</button>
+<!-- <button class="share-button" bindtap="onShareTimeline">分享到朋友圈</button> -->
+
+<!-- 底部导航栏 -->
+<view class="bottom-nav">
+    <view class="nav-item" bindtap="goToIndex">
+        <image class="icon" src="../../static/logo/home.png" />
+    </view>
+    <view class="nav-item" bindtap="goToDownload">
+        <image class="icon" src="../../static/logo/download.png" />
+    </view>
+    <view class="nav-item" bindtap="goToSetting">
+        <image class="icon" src="../../static/logo/setting.png" />
+    </view>
+</view>

@@ -1,0 +1,32 @@
+<view class="notification">
+  <view class="notification-text notice">重要提示：</view>
+  <view class="notification-text"> 1. 数据仅保存在小程序内，更换设备或切换微信账号都会导致数据丢失。</view>
+  <view class="notification-text"> 2. 请定时备份数据，避免出现 "**，怎么都没了" 的控诉。</view>
+  <view class="notification-text"> 3. 备份数据均未进行加密，请妥善保管备份内容。</view>
+  <view class="notification-text"> 4. 备份数据为所有秘钥集合，可能会导致一些工具无法识别二维码，可采用文件内容自行生成二维码或复制后手动输入秘钥。</view>
+</view>
+
+<view class="container">
+  <view class="qr-container">
+    <canvas wx:if="{{secretData}}" canvas-id="myQRCode" class="qr-canvas"></canvas>
+    <text class="qr-title">{{ code ? '备份二维码' : '暂无数据需要备份，请先设置秘钥' }}</text>
+  </view>
+
+  <view class="button-group">
+    <button class="download-button" bindtap="downloadQRCode">下载二维码</button>
+    <button class="download-button" bindtap="downloadFile">下载文件</button>
+    <button class="download-button" bindtap="copyJsonData">复制文本</button>
+  </view>
+</view>
+<!-- 底部导航栏 -->
+<view class="bottom-nav">
+    <view class="nav-item" bindtap="goToIndex">
+        <image class="icon" src="../../static/logo/home.png" />
+    </view>
+    <view class="nav-item" bindtap="goToDownload">
+        <image class="icon" src="../../static/logo/download.png" />
+    </view>
+    <view class="nav-item" bindtap="goToSetting">
+        <image class="icon" src="../../static/logo/setting.png" />
+    </view>
+</view>

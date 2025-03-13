@@ -1,0 +1,158 @@
+/* 页面背景 */
+page {
+  background-color: #1e1e1e; /* 更深的黑色，适合黑色系 */
+  padding: 20rpx;
+}
+
+/* 容器 */
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #2c2c2c; /* 深灰色背景，更有层次感 */
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 发布平台/备注 */
+.container .issuer,
+.container .account,
+.container .icon {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25rpx; /* 增加项之间的间距 */
+}
+
+.issuer .title,
+.account .title,
+.icon .title {
+  color: #a8a8a8; /* 更柔和的灰色，提升视觉效果 */
+  margin-bottom: 5rpx;
+  font-size: 36rpx;
+}
+
+.issuer .input,
+.account .input {
+  height: 70rpx;
+  padding: 0 30rpx;
+  background-color: #3a3a3a; /* 更深的灰色背景 */
+  border: 1px solid #555555; /* 更明显的边框 */
+  color: #fff;
+  font-size: 34rpx; /* 调整字体大小 */
+  line-height: 70rpx;
+  border-radius: 10rpx;
+  transition: border-color 0.3s ease;
+}
+
+.input input {
+  height: 70rpx;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 34rpx;
+}
+
+/* Focused state */
+.input:focus-within {
+  border-color: #3273DC; /* Focus时的蓝色边框 */
+}
+
+/* 账号 */
+.container .account {
+  margin-bottom: 25rpx;
+}
+
+/* 图标区域 */
+.container .icon {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon .title {
+  color: #a8a8a8;
+  margin-bottom: 5rpx;
+  font-size: 36rpx;
+}
+
+.upload {
+  display: flex;
+  align-items: center;
+}
+
+.choose {
+  height: 70rpx;
+  width: 276rpx;
+  background-color: #4b4b4b; /* 增强按钮的视觉对比 */
+  color: #fff;
+  font-size: 34rpx;
+  line-height: 70rpx;
+  letter-spacing: 4rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.choose:hover {
+  background-color: #3273DC; /* Hover时背景色变蓝 */
+}
+
+.preview {
+  margin-left: 20rpx;
+  height: 70rpx;
+  width: 136rpx;
+  background-color: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rpx;
+}
+
+.preview image {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 操作按钮区域 */
+.operation {
+  display: flex;
+  /* justify-content: space-between; */
+  margin-top: 30rpx; /* 改小操作按钮区域的间距 */
+}
+
+.save,
+.cancel {
+  width: 138rpx;
+  height: 70rpx; /* 改小按钮的高度 */
+  font-size: 34rpx; /* 改小按钮字体 */
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* 保存按钮 */
+.save {
+  background-color: #3273DC;
+  color: #fff;
+}
+
+.save:hover {
+  background-color: #2a61b1;
+}
+
+/* 取消按钮 */
+.cancel {
+  background-color: transparent;
+  color: #a8a8a8;
+  border: 1px solid #4a4a4a;
+  margin-left: 6%; /* 取消按钮靠近保存按钮 */
+}
+
+.cancel:hover {
+  color: #3273DC;
+  border-color: #3273DC;
+}
